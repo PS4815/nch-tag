@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ukb//Tag der Berliner Neurochirurgie//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:tag-berliner-neurochirurgie-20260424@ukb
+DTSTAMP:20260225T120000Z
+DTSTART:20260424T080000Z
+DTEND:20260424T164500Z
+SUMMARY:4. Tag der Berliner Neurochirurgie (ukb)
+LOCATION:Prof.-Ekkernkamp-Hörsaal, Historisches Kesselhaus, BG Klinikum Unfallkrankenhaus Berlin (ukb)
+DESCRIPTION:Kostenfreies interdisziplinäres Fortbildungs- und Netzwerktreffen. Ort: Historisches Kesselhaus (ukb). Programm: siehe Landingpage.
+END:VEVENT
+END:VCALENDAR
