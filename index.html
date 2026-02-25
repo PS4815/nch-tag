@@ -141,20 +141,25 @@
       background: rgba(255,255,255,.58);
       border: 1px solid rgba(11,18,32,.10);
     }
+
     .dot{
-  width:12px;
-  height:12px;
-  border-radius:999px;
-  background:#E11D48; /* rot (modern, nicht grell) */
-  position: relative;
-  box-shadow: 0 0 0 0 rgba(225, 29, 72, .35);
-  animation: pulseDot 1.6s ease-in-out infinite;
+      width:12px;
+      height:12px;
+      border-radius:999px;
+      background:#E11D48; /* rot (modern, nicht grell) */
+      position: relative;
+      box-shadow: 0 0 0 0 rgba(225, 29, 72, .35);
+      animation: pulseDot 1.6s ease-in-out infinite;
     }
 
-     @keyframes pulseDot{
-  0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(225, 29, 72, .35); }
-  60%  { transform: scale(1);   box-shadow: 0 0 0 12px rgba(225, 29, 72, 0); }
-  100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+    @keyframes pulseDot{
+      0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(225, 29, 72, .35); }
+      60%  { transform: scale(1);   box-shadow: 0 0 0 12px rgba(225, 29, 72, 0); }
+      100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .dot{ animation: none; }
     }
 
     .dateLine .sub{
@@ -255,12 +260,12 @@
     .cmeFloat{
       position:absolute;
       right: 72px;     /* fein justierbar */
-      top: 10px;      /* fein justierbar */
+      top: 10px;       /* fein justierbar */
       width: 260px;
       height: 260px;
       object-fit: contain;
       opacity: .92;
-      transform: rotate(25deg); /* +35°, kippt nach rechts */
+      transform: rotate(25deg);
       filter: saturate(1.08) drop-shadow(0 24px 44px rgba(2,6,23,.18));
       mix-blend-mode: multiply;
       pointer-events:none;
@@ -363,18 +368,19 @@
       align-items:center;
       white-space: nowrap;
     }
+
     .photoNote{
-  flex-basis: 100%;
-  color: rgba(94,107,130,.95);
-  font-size: 12.5px;
-  line-height: 1.35;
-  margin-top: 6px;
-}
+      flex-basis: 100%;
+      color: rgba(94,107,130,.95);
+      font-size: 12.5px;
+      line-height: 1.35;
+      margin-top: 6px;
+    }
     .photoNote a{
-  color: rgba(94,107,130,.95);
-  border-bottom: 1px solid rgba(94,107,130,.30);
-  padding-bottom: 1px;
-} 
+      color: rgba(94,107,130,.95);
+      border-bottom: 1px solid rgba(94,107,130,.30);
+      padding-bottom: 1px;
+    }
     footer img{ width: 44px; height: 44px; object-fit:contain; opacity:.95; }
 
     @media (max-width: 980px){
@@ -395,6 +401,245 @@
         top: 210px;
         width: 190px;
         height: 190px;
+      }
+    }
+
+    /* =========================
+       MOBILE FIX (<=700px)
+       ========================= */
+    @media (max-width: 700px){
+
+      /* Header kompakter */
+      .topbar{
+        padding: 10px 14px;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .brand{
+        min-width: 0;
+        gap: 10px;
+        flex: 1;
+      }
+
+      .brand img{
+        width: 34px;
+        height: 34px;
+      }
+
+      .brand .t strong{
+        font-size: 13px;
+        line-height: 1.1;
+        display: block;
+      }
+
+      .brand .t span{
+        font-size: 10.5px;
+        line-height: 1.15;
+        margin-top: 2px;
+      }
+
+      .nav{
+        gap: 4px;
+        font-size: 12px;
+        flex-direction: column;
+        align-items: flex-end;
+        white-space: nowrap;
+      }
+
+      .nav a{
+        padding: 4px 6px;
+      }
+
+      /* Hero kompakter */
+      .hero{
+        padding: 18px 0 24px;
+        min-height: auto;
+      }
+
+      .wrap{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .sheet{
+        width: 100%;
+        border-radius: 22px;
+        padding: 14px 12px 14px;
+        background: rgba(255,255,255,.40);
+        backdrop-filter: blur(22px);
+      }
+
+      /* Datum zweizeilig */
+      .dateLine{
+        font-size: 14px;
+        gap: 8px;
+        margin-bottom: 10px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .dateBadge{
+        padding: 8px 10px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .dateLine .sub{
+        font-size: 13px;
+        line-height: 1.25;
+        padding-left: 2px;
+      }
+
+      /* Dot: etwas kleiner auf mobile */
+      .dot{
+        width: 10px;
+        height: 10px;
+      }
+
+      /* Titel untereinander */
+      .titleRow{
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .heroLogo{
+        width: 110px;
+        height: 110px;
+        margin-top: 0;
+        margin-bottom: 2px;
+      }
+
+      .titleText{
+        padding-right: 0;
+      }
+
+      h1{
+        font-size: clamp(28px, 9vw, 42px);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+      }
+
+      .lead{
+        font-size: 14px;
+        line-height: 1.3;
+        margin-top: 8px;
+      }
+
+      .metaRow{
+        font-size: 13px;
+        gap: 8px 12px;
+        margin-top: 10px;
+      }
+
+      /* Buttons stapeln */
+      .cta{
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        overflow: visible;
+      }
+
+      .btn{
+        width: 100%;
+        height: 42px;
+        font-size: 13px;
+        justify-content: center;
+      }
+
+      /* CME-Stempel kleiner + Ecke, damit nichts überdeckt */
+      .cmeFloat{
+        width: 118px;
+        height: 118px;
+        right: 6px;
+        top: 128px;
+        transform: rotate(25deg);
+        opacity: .85;
+        z-index: 3;
+      }
+
+      .hairline{
+        margin-top: 12px;
+      }
+
+      .below{
+        padding-top: 18px;
+      }
+
+      .section{
+        padding-top: 12px;
+      }
+
+      h2{
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      ul{
+        font-size: 14px;
+        margin-left: 16px;
+      }
+
+      li{
+        margin: 8px 0;
+      }
+
+      .spacer{
+        height: 14px;
+      }
+
+      .subline{
+        margin: 12px 0 12px;
+      }
+
+      /* Kontakt mobil */
+      .contact{
+        grid-template-columns: 1fr;
+        gap: 6px;
+        font-size: 14px;
+      }
+
+      .label{
+        padding-top: 0;
+        margin-top: 6px;
+      }
+
+      .value{
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .value small{
+        font-size: 13px;
+        line-height: 1.25;
+      }
+
+      footer{
+        margin-top: 16px;
+        padding-top: 12px;
+        align-items: flex-start;
+      }
+
+      .footerLinks{
+        gap: 8px 10px;
+        font-size: 12.5px;
+      }
+
+      .credit{
+        white-space: normal;
+        font-size: 12.5px;
+      }
+
+      .photoNote{
+        font-size: 11.5px;
+        line-height: 1.35;
+      }
+
+      footer img{
+        width: 34px;
+        height: 34px;
       }
     }
   </style>
@@ -447,7 +692,7 @@
 
             <div class="cta">
               <a class="btn primary" href="programm.pdf" target="_blank" rel="noopener">Programm</a>
-              <a class="btn" href="event.ics">In Kalender speichern</a>
+              <a class="btn" href="event.ics" download="4-Tag-Berliner-Neurochirurgie-2026.ics">In Kalender speichern</a>
               <a class="btn" href="https://maps.app.goo.gl/C1HHUT6tFdxZiX7J9" target="_blank" rel="noopener">Anfahrt Google Maps</a>
             </div>
           </div>
@@ -491,10 +736,12 @@
             <a href="https://www.bg-kliniken.de/unfallkrankenhaus-berlin/impressum/" target="_blank" rel="noopener">Impressum</a>
             <a href="https://www.bg-kliniken.de/unfallkrankenhaus-berlin/datenschutz/" target="_blank" rel="noopener">Datenschutz</a>
           </div>
-<div class="photoNote">
-    Foto-/Video-Hinweis: Während der Veranstaltung werden Foto- und ggf. Videoaufnahmen erstellt. Die Veröffentlichung erfolgt zur Dokumentation und Öffentlichkeitsarbeit. Wenn Sie nicht abgebildet werden möchten, sprechen Sie uns bitte vor Ort an oder kontaktieren Sie
-    <a href="mailto:nchirsekretariat@ukb.de">nchirsekretariat@ukb.de</a>.
-  </div>
+
+          <div class="photoNote">
+            Foto-/Video-Hinweis: Während der Veranstaltung werden Foto- und ggf. Videoaufnahmen erstellt. Die Veröffentlichung erfolgt zur Dokumentation und Öffentlichkeitsarbeit. Wenn Sie nicht abgebildet werden möchten, sprechen Sie uns bitte vor Ort an oder kontaktieren Sie
+            <a href="mailto:nchirsekretariat@ukb.de">nchirsekretariat@ukb.de</a>.
+          </div>
+
           <img src="logo.png" alt="Logo" />
         </footer>
       </div>
